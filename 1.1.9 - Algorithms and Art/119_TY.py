@@ -4,18 +4,34 @@ import random
 
 number = trtl.Turtle()
 
+# ask for bolding
+bold= trtl.textinput("Do you want bold","Enter yes/no")
+if bold == "yes":
+    number.pensize(6.7)
+else:
+    color6 = "red"
+
+
 # ask for colors
 custom_colors = trtl.textinput("Do you want custom colors","Enter yes/no")
 colors = ["red","orange","gold","green","blue","purple"]
+is_error = False
 if (custom_colors == "yes"):
-    color6 = trtl.textinput("What color should the 6 be?","Enter color here")
-    color7 = trtl.textinput("What color should the 7 be?","Enter color here")
+    while not is_error:
+        color6 = trtl.textinput("What color should the 6 be?","Enter color here")
+        color7 = trtl.textinput("What color should the 7 be?","Enter color here")
+        try:
+            number.color(color6)
+            number.color(color7)
+            is_error=True
+        except trtl.TurtleGraphicsError:
+            is_error=False
 else:
     color6 = random.choice(colors)
     color7 = random.choice(colors)
     
 #ask for size
-custom_size = trtl.textinput("Do you wanta custom size","Enter yes/no")
+custom_size = trtl.textinput("Do you want a custom size","Enter yes/no")
 if custom_size == "yes":
     size6 = trtl.numinput("What size should it be?","Enter size here")
     size7 = trtl.numinput("What size should it be?","Enter size here")
@@ -23,10 +39,12 @@ else:
     size6 = 67
     size7 = 67
 #setup custom turtle
- 
+trtl.addshape("6",((10,10),(-10,10),(-10,-10),(10,-10),(10,-2),(4,-2),(4,-8),(-2,-8),(-2,-2),(4,-2),(-5,-2),(-5,7),(10,7)))
+trtl.addshape("7",((-10,8),(-10,10),(10,10),(-8,-10),(-10,-10),(-10,-8),(8,8)))
 
 # draw the 6
 number.penup()
+number.shape("6")
 number.goto(-50,0)
 number.pendown()
 number.color(color6)
@@ -42,6 +60,7 @@ number.circle(size6)
 number.penup()
 
 #draw the 7
+number.shape("7")
 y = 0 + size7
 number.goto(50,y)
 number.color(color7)
