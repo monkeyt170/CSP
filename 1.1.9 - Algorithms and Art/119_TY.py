@@ -9,8 +9,7 @@ bold= trtl.textinput("Do you want bold","Enter yes/no")
 if bold == "yes":
     number.pensize(6.7)
 else:
-    color6 = "red"
-
+    number.pensize(1)
 
 # ask for colors
 custom_colors = trtl.textinput("Do you want custom colors","Enter yes/no")
@@ -33,8 +32,8 @@ else:
 #ask for size
 custom_size = trtl.textinput("Do you want a custom size","Enter yes/no")
 if custom_size == "yes":
-    size6 = trtl.numinput("What size should it be?","Enter size here")
-    size7 = trtl.numinput("What size should it be?","Enter size here")
+    size6 = trtl.numinput("What size should the 6 be?","Enter size here")
+    size7 = trtl.numinput("What size should the 7 be?","Enter size here")
 else:
     size6 = 67
     size7 = 67
