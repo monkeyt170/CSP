@@ -30,10 +30,14 @@ else:
     color7 = random.choice(colors)
     
 #ask for size
+size6=151
+size7=151
 custom_size = trtl.textinput("Do you want a custom size","Enter yes/no")
 if custom_size == "yes":
-    size6 = trtl.numinput("What size should the 6 be?","Enter size here")
-    size7 = trtl.numinput("What size should the 7 be?","Enter size here")
+    while size6>=150:
+        size6 = trtl.numinput("What size should the 6 be?","Enter size here")
+    while size7>=150:
+        size7 = trtl.numinput("What size should the 7 be?","Enter size here")
 else:
     size6 = 67
     size7 = 67
