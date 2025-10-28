@@ -19,14 +19,25 @@ mover = trtl.Turtle()
 
 def move_direction(active_turtle,d):
     active_turtle.setheading(d)
-    active_turtle.foward(20)
+    active_turtle.forward(20)
 
+def left_move():
+    move_direction(mover,180)
 
+def right_move():
+    move_direction(mover,0)
 
+def up_move():
+    move_direction(mover,90)
 
+def down_move():
+    move_direction(mover,270)
 
-
-
+wn.listen()
+wn.onkeypress(left_move,"Left")
+wn.onkeypress(right_move,"Right")
+wn.onkeypress(up_move,"Up")
+wn.onkeypress(down_move,"Down")
 
 
 #Score of moving the object
