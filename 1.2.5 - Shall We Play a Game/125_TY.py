@@ -12,6 +12,12 @@ wn = trtl.Screen()
 
 #Random spawning turtle on the screen 
 
+x = rand.randint(-300,300)
+y = rand.randint(-300,300)
+objects = trtl.Turtle()
+objects.goto(x,y)
+
+
 
 
 
@@ -45,16 +51,19 @@ wn.onkeypress(up_move,"Up")
 wn.onkeypress(down_move,"Down")
 
 #Score of moving the object
-score = trtl.Turtle()
-score.penup()
-score.hideturtle()
-score.goto(500,550)
+score_writer = trtl.Turtle()
+score_writer.penup()
+score_writer.hideturtle()
+score_writer.goto(200,200)
+
 
 def score_count():
+    score_writer.clear()
     global score
     score +=1
-    score.write("Arial", 24, "normal")
-    
+    print(score)
+    score_writer.clear()
+    score_writer.write(score, move=False, align='left', font=("Arial", 24, "normal"))
 
 
 #Turtle hits turtle ends game
@@ -65,6 +74,8 @@ def score_count():
 
 
 
+
+#
 wn = trtl.Screen()
 wn.setup(width=600, height=600)
 wn.cv._rootwindow.resizable(False, False)
