@@ -11,11 +11,12 @@ wn = trtl.Screen()
 
 
 #Random spawning turtle on the screen 
-
-x = rand.randint(-300,300)
-y = rand.randint(-300,300)
-objects = trtl.Turtle()
-objects.goto(x,y)
+def random_turtle():
+    x = rand.randint(-300,300)
+    y = rand.randint(-300,300)
+    objects = trtl.Turtle()
+    objects.penup()
+    objects.goto(x,y)
 
 
 
@@ -65,7 +66,8 @@ def score_count():
     score_writer.clear()
     score_writer.write(score, move=False, align='left', font=("Arial", 24, "normal"))
 
-
+while 1 == 1:
+    random_turtle()
 #Turtle hits turtle ends game
 
 
