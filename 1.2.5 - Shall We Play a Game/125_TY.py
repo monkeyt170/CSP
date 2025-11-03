@@ -18,11 +18,6 @@ def random_turtle():
     objects.penup()
     objects.goto(x,y)
 
-
-
-
-
-
 #Turtle moving as an object with arrow keys
 mover = trtl.Turtle()
 mover.penup()
@@ -45,7 +40,8 @@ def up_move():
 def down_move():
     move_direction(mover,270)
 
-wn.listen()
+wn.listen(False)
+wn.tracer(3)
 wn.onkeypress(left_move,"Left")
 wn.onkeypress(right_move,"Right")
 wn.onkeypress(up_move,"Up")
@@ -65,9 +61,9 @@ def score_count():
     print(score)
     score_writer.clear()
     score_writer.write(score, move=False, align='left', font=("Arial", 24, "normal"))
-
+'''
 while 1 == 1:
-    random_turtle()
+    random_turtle()'''
 #Turtle hits turtle ends game
 
 
