@@ -15,8 +15,6 @@ if difficulty == "easy":
 else:
     timer = 0.1
 
-    
-
 
 #Random spawning turtle on the screen 
 turtles = []
@@ -39,16 +37,26 @@ def move_direction(active_turtle,d):
     score_count()
 
 def left_move():
-    move_direction(mover,180)
+    global mover
+    if  mover.xcor() > -300 - 20:
+        move_direction(mover,180)
 
 def right_move():
-    move_direction(mover,0)
+    global mover
+    if  mover.xcor() < 300 - 20:
+        move_direction(mover,0)
 
 def up_move():
-    move_direction(mover,90)
+    global mover
+    if  mover.ycor() < 300 - 20:
+        move_direction(mover,90)
 
 def down_move():
-    move_direction(mover,270)
+    global mover
+    if  mover.ycor() > -300 + 20:
+        move_direction(mover,270)
+
+
 
 wn.listen()
 wn.tracer(3)
@@ -61,7 +69,7 @@ wn.onkeypress(down_move,"Down")
 score_writer = trtl.Turtle()
 score_writer.penup()
 score_writer.hideturtle()
-score_writer.goto(200,200)
+score_writer.goto(250,250)
 
 
 def score_count():
