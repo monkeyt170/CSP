@@ -1,13 +1,21 @@
 #setup
 import turtle as trtl
 import random as rand
+import time
+
 
 wn = trtl.Screen()
+wn.setup(width=600, height=600)
+wn.cv._rootwindow.resizable(False, False)
 
 #Setting difficulty for how much turtles spawn 
+difficulty = trtl.textinput("What difficulty do you want?","Easy or Hard")
+if difficulty == "easy":
+    timer = 1
+else:
+    timer = 0.1
 
-
-
+    
 
 
 #Random spawning turtle on the screen 
@@ -77,16 +85,17 @@ def detect_collision(turtle1, group):
 
 while collide == False:
     random_turtle()
+    time.sleep(timer)
     detect_collision(mover, turtles)
 
-#End game screen with scoreboard
 if collide == True:
     wn.clear()
+
+#End game screen with scoreboard
+
 
 
 
 #
 wn = trtl.Screen()
-wn.setup(width=600, height=600)
-wn.cv._rootwindow.resizable(False, False)
 wn.mainloop()
