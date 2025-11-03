@@ -11,12 +11,14 @@ wn = trtl.Screen()
 
 
 #Random spawning turtle on the screen 
+turtles = []
 def random_turtle():
     x = rand.randint(-300,300)
     y = rand.randint(-300,300)
     objects = trtl.Turtle()
     objects.penup()
     objects.goto(x,y)
+    turtles.append(objects)
 
 #Turtle moving as an object with arrow keys
 mover = trtl.Turtle()
@@ -40,7 +42,7 @@ def up_move():
 def down_move():
     move_direction(mover,270)
 
-wn.listen(False)
+wn.listen()
 wn.tracer(3)
 wn.onkeypress(left_move,"Left")
 wn.onkeypress(right_move,"Right")
@@ -61,15 +63,25 @@ def score_count():
     print(score)
     score_writer.clear()
     score_writer.write(score, move=False, align='left', font=("Arial", 24, "normal"))
-'''
-while 1 == 1:
-    random_turtle()'''
+
+
 #Turtle hits turtle ends game
+collide = False
+def detect_collision(turtle1, group):
+    global collide
+    for turtle2 in group:
+        if turtle1 != turtle2 and turtle1.distance(turtle2) < 20:
+            collide = True
+            turtle2.reset() 
+            break
 
-
+while collide == False:
+    random_turtle()
+    detect_collision(mover, turtles)
 
 #End game screen with scoreboard
-
+if collide == True:
+    wn.clear()
 
 
 
