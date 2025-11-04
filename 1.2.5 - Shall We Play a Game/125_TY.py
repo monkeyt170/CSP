@@ -10,9 +10,10 @@ wn.cv._rootwindow.resizable(False, False)
 
 #Setting difficulty for how much turtles spawn 
 difficulty = trtl.textinput("What difficulty do you want?","Easy or Hard")
-if difficulty == "easy":
+if difficulty == "easy":''
     timer = 1
 else:
+    difficulty = "hard"
     timer = 0.1
 
 
@@ -22,19 +23,23 @@ def random_turtle():
     x = rand.randint(-300,300)
     y = rand.randint(-300,300)
     objects = trtl.Turtle()
+    objects.hideturtle()
+    objects.color("red")
     objects.penup()
     objects.goto(x,y)
+    objects.showturtle()
     turtles.append(objects)
 
 #Turtle moving as an object with arrow keys
 mover = trtl.Turtle()
+mover.color("blue")
 mover.penup()
 score = 0
 
 def move_direction(active_turtle,d):
     active_turtle.setheading(d)
     active_turtle.forward(20)
-    score_count()
+    score_count(active_turtle)
 
 def left_move():
     global mover
@@ -72,13 +77,12 @@ score_writer.hideturtle()
 score_writer.goto(250,250)
 
 
-def score_count():
-    score_writer.clear()
+def score_count(active_turtle):
+    active_turtle.clear()
     global score
     score +=1
-    print(score)
-    score_writer.clear()
-    score_writer.write(score, move=False, align='left', font=("Arial", 24, "normal"))
+    active_turtle.clear()
+    active_turtle.write(score, move=False, align='left', font=("Arial", 24, "normal"))
 
 
 #Turtle hits turtle ends game
@@ -86,7 +90,7 @@ collide = False
 def detect_collision(turtle1, group):
     global collide
     for turtle2 in group:
-        if turtle1 != turtle2 and turtle1.distance(turtle2) < 20:
+        if turtle1 != turtle2 and turtle1.distance(turtle2) < 10:
             collide = True
             turtle2.reset() 
             break
@@ -99,10 +103,10 @@ while collide == False:
 if collide == True:
     wn.clear()
 
-#End game screen with scoreboard
-
-
-
+#End game screen with score
+wn.clear()
+score_writer.goto(0,0)
+score_writer.write(difficulty + " Mode: Your score was a " + str(score), move=False, align='center', font=("Arial", 24, "normal"))
 
 #
 wn = trtl.Screen()
