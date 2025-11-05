@@ -10,7 +10,7 @@ wn.cv._rootwindow.resizable(False, False)
 
 #Setting difficulty for how much turtles spawn 
 difficulty = trtl.textinput("What difficulty do you want?","Easy or Hard")
-if difficulty == "easy":''
+if difficulty == "easy":
     timer = 1
 else:
     difficulty = "hard"
@@ -61,8 +61,6 @@ def down_move():
     if  mover.ycor() > -300 + 20:
         move_direction(mover,270)
 
-
-
 wn.listen()
 wn.tracer(3)
 wn.onkeypress(left_move,"Left")
@@ -106,7 +104,8 @@ if collide == True:
 #End game screen with score
 wn.clear()
 score_writer.goto(0,0)
-score_writer.write(difficulty + " Mode: Your score was a " + str(score), move=False, align='center', font=("Arial", 24, "normal"))
+score_writer.write(difficulty.upper() + " Mode: Your score was a " + str(score), move=False, align='center', font=("Arial", 24, "normal"))
+
 
 #
 wn = trtl.Screen()
