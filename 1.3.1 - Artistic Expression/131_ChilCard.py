@@ -5,9 +5,10 @@
 #Movement in the game using arrow keys
 
 import turtle as trtl
+import random as rand
 envolope = trtl.Turtle()
-
-maze1img = "maze1.png"
+mazes = ["maze1.png","maze2.png","maze3.png"]
+encimgs = ["q1.png","q2.png","q3.png"]
 wn = trtl.Screen()
 
 
@@ -34,17 +35,30 @@ def yn_screen(x, y):
     no.goto(100,-100)
     no.write("no", align="center", font=("Arial", 28, "bold"))
 
-def maze1(x, y):
+etrtl = trtl.Turtle()
+etrtl.hideturtle()
+def maze(x, y):
     yn.clear()
     no.clear()
     yn.hideturtle()
     no.hideturtle()
+    etrtl.penup()
+    etrtl.goto(100, 100)
+    etrtl.write("Click here when you have completed the maze", align="center", font=("Arial", 28, "bold"))
+    etrtl.showturtle()
+    etrtl.shape("circle")
     movertrtl.penup()
     movertrtl.goto(-100, 60)
     movertrtl.setheading(270)
-    wn.bgpic(maze1img)
+    movertrtl.showturtle()
+    wn.bgpic(rand.choice(mazes))
+
+def encscreen(x,y):
+    wn.clear()
+    wn.bgpic(rand.choice(encimgs))
 
 movertrtl = trtl.Turtle()
+movertrtl.hideturtle()
 def up():
     movertrtl.setheading(90)
     movertrtl.forward(10)
@@ -63,18 +77,15 @@ wn.onkey(down, "Down")
 wn.onkey(left, "Left")
 wn.onkey(right, "Right")
 
-def enourage_screen():
-    if movertrtl.pos == (-100,50):
-        wn.clear()
-        envolope.write("test")
-        
+etrtl.onclick(encscreen)
+
     
 
 
     
 
 envolope.onclick(yn_screen)
-yn.onclick(maze1)
+yn.onclick(maze)
 
 
 
