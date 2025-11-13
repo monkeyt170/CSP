@@ -13,6 +13,7 @@ wn = trtl.Screen()
 
 
 def envolope_screen():
+    envolope.speed(0)
     envolope.goto(150,100)
     envolope.goto(150,-100)
     envolope.goto(-150,-100)
@@ -21,6 +22,7 @@ def envolope_screen():
     envolope.goto(-150,100)
     envolope.goto(150,100)
     envolope.goto(0,0)
+    envolope.shape("circle")
 
 yn = trtl.Turtle()
 no = trtl.Turtle()
@@ -31,9 +33,15 @@ def yn_screen(x, y):
     yn.penup()
     yn.goto(-100,-100)
     yn.write("yes", align="center", font=("Arial", 28, "bold"))
+    yn.goto(-100, -110)
+    yn.color("green")
+    yn.shape("circle")
     no.penup()
     no.goto(100,-100)
     no.write("no", align="center", font=("Arial", 28, "bold"))
+    no.goto(100, -110)
+    no.color("red")
+    no.shape("circle")
 
 etrtl = trtl.Turtle()
 etrtl.hideturtle()
@@ -59,18 +67,20 @@ def encscreen(x,y):
 
 movertrtl = trtl.Turtle()
 movertrtl.hideturtle()
+movertrtl.turtlesize(2)
+movertrtl.color("green")
 def up():
     movertrtl.setheading(90)
-    movertrtl.forward(10)
+    movertrtl.forward(20)
 def down():
     movertrtl.setheading(270)
-    movertrtl.forward(10)
+    movertrtl.forward(20)
 def left():
     movertrtl.setheading(180)
-    movertrtl.forward(10)
+    movertrtl.forward(20)
 def right():
     movertrtl.setheading(0)
-    movertrtl.forward(10)
+    movertrtl.forward(20)
 wn.listen()
 wn.onkey(up, "Up")
 wn.onkey(down, "Down")
@@ -86,7 +96,7 @@ etrtl.onclick(encscreen)
 
 envolope.onclick(yn_screen)
 yn.onclick(maze)
-
+no.onclick(encscreen)
 
 
 
