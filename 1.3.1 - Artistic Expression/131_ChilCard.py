@@ -60,32 +60,56 @@ def maze(x, y):
     movertrtl.setheading(270)
     movertrtl.showturtle()
     wn.bgpic(rand.choice(mazes))
-
+    
+end = 0
 def encscreen(x,y):
+    global end
+    end = end + 1
     wn.clear()
     wn.bgpic(rand.choice(encimgs))
+    movement_change_color(1,0,0)
+    
+    
 
 movertrtl = trtl.Turtle()
 movertrtl.hideturtle()
 movertrtl.turtlesize(2)
-movertrtl.color("green")
+movertrtl.color("black")
+
 def up():
     movertrtl.setheading(90)
     movertrtl.forward(20)
+    movement_change_color(3,0,0)
 def down():
     movertrtl.setheading(270)
     movertrtl.forward(20)
+    movement_change_color(3,0,0)
 def left():
     movertrtl.setheading(180)
     movertrtl.forward(20)
+    movement_change_color(3,0,0)
 def right():
     movertrtl.setheading(0)
     movertrtl.forward(20)
+    movement_change_color(3,0,0)
+
 wn.listen()
 wn.onkey(up, "Up")
 wn.onkey(down, "Down")
 wn.onkey(left, "Left")
 wn.onkey(right, "Right")
+
+
+def movement_change_color(tracer, x, y):
+    wn.tracer(tracer)
+    while end == 0:
+        if movertrtl.xcor() > x and movertrtl.ycor() > y:
+            movertrtl.color("green")
+        elif movertrtl.xcor() < x and movertrtl.ycor() > y:
+            movertrtl.color("red")
+    while end == 1:
+        wn.bgcolor("blue")
+
 
 etrtl.onclick(encscreen)
 
