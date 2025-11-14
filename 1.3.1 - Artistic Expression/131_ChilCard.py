@@ -12,15 +12,15 @@ encimgs = ["q1.png","q2.png","q3.png"]
 wn = trtl.Screen()
 
 
-def envolope_screen():
-    envolope.speed(0)
-    envolope.goto(150,100)
-    envolope.goto(150,-100)
-    envolope.goto(-150,-100)
-    envolope.goto(-150,100)
+def envolope_screen(speed, x ,y):
+    envolope.speed(speed)
+    envolope.goto(x,y)
+    envolope.goto(x,-y)
+    envolope.goto(-x,-y)
+    envolope.goto(-x,y)
     envolope.goto(0,0)
-    envolope.goto(-150,100)
-    envolope.goto(150,100)
+    envolope.goto(-x,y)
+    envolope.goto(x,y)
     envolope.goto(0,0)
     envolope.shape("circle")
 
@@ -45,6 +45,11 @@ def yn_screen(x, y):
 
 etrtl = trtl.Turtle()
 etrtl.hideturtle()
+movertrtl = trtl.Turtle()
+movertrtl.hideturtle()
+movertrtl.turtlesize(2)
+movertrtl.color("black")
+
 def maze(x, y):
     yn.clear()
     no.clear()
@@ -68,13 +73,6 @@ def encscreen(x,y):
     wn.clear()
     wn.bgpic(rand.choice(encimgs))
     movement_change_color(1,0,0)
-    
-    
-
-movertrtl = trtl.Turtle()
-movertrtl.hideturtle()
-movertrtl.turtlesize(2)
-movertrtl.color("black")
 
 def up():
     movertrtl.setheading(90)
@@ -112,20 +110,10 @@ def movement_change_color(tracer, x, y):
 
 
 etrtl.onclick(encscreen)
-
-    
-
-
-    
-
 envolope.onclick(yn_screen)
 yn.onclick(maze)
 no.onclick(encscreen)
-
-
-
-
-envolope_screen()
+envolope_screen(0, 150, 100)
 
 
 
