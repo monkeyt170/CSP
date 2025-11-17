@@ -61,7 +61,7 @@ def maze(x, y):
     etrtl.showturtle()
     etrtl.shape("circle")
     movertrtl.penup()
-    movertrtl.goto(0, 250)
+    movertrtl.goto(1, 251)
     movertrtl.setheading(270)
     movertrtl.showturtle()
     wn.bgpic(rand.choice(mazes))
