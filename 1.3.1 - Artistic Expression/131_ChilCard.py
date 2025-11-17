@@ -91,22 +91,16 @@ def right():
     movertrtl.forward(20)
     movement_change_color(3,0,0)
 
-wn.listen()
-wn.onkey(up, "Up")
-wn.onkey(down, "Down")
-wn.onkey(left, "Left")
-wn.onkey(right, "Right")
-
-
 def movement_change_color(tracer, x, y):
     wn.tracer(tracer)
-    while end == 0:
-        if movertrtl.xcor() > x and movertrtl.ycor() > y:
+    while end != 1:
+        if movertrtl.xcor() >= x:
             movertrtl.color("green")
-        elif movertrtl.xcor() < x and movertrtl.ycor() > y:
+        elif movertrtl.xcor() < x:
             movertrtl.color("red")
     while end == 1:
         wn.bgcolor("blue")
+
 
 
 etrtl.onclick(encscreen)
@@ -114,6 +108,12 @@ envolope.onclick(yn_screen)
 yn.onclick(maze)
 no.onclick(encscreen)
 envolope_screen(0, 150, 100)
+
+wn.listen()
+wn.onkey(up, "Up")
+wn.onkey(down, "Down")
+wn.onkey(left, "Left")
+wn.onkey(right, "Right")
 
 
 
